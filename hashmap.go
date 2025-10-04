@@ -85,9 +85,7 @@ func (h *HashMap[K, V]) rehash() {
 	h.size = 0
 
 	for _, pair := range old {
-		// Skip empty slots (zero values)
-		var zero K
-		if pair.Key != zero {
+		if pair != nil {
 			h.Set(pair.Key, pair.Value)
 		}
 	}
